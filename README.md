@@ -27,10 +27,10 @@ project_repo
     |   |                 ^- Codes containing conversational, Q&A element of Misha
     |   |                 with text-to-speech element
     │   └── faq_SBERT_train.py
-    |                     ^- codes to train SBERT model and save trained results in 
+    |                     ^- codes to train Sentence Transformers model and save trained results in 
     |                       `SBERT/bot` folder
-    ├── data/               <-  Folders containing text datasets for training sentence BERT and
-    |                       classification model
+    ├── data/               <-  Folders containing text datasets for training sentence transformers and
+    |                       BERT classification model
     ├── README.md           <-  Explains working principle of the Chatbot
     │                       and how to set it up
     ├── requirements.yml    <-  YAML file containing dependency list for setting up
@@ -50,7 +50,7 @@ To set up and run the chatbot:
 3. Create a conda environment using `requirements.yml` [`conda env create -f requirements.yml`]. The name of the conda environment is `mishabot`
 4. Activate conda env (`conda activate mishabot`)
 
-***Download classification model weights/train Sentence BERT model***
+***Download classification model weights/train Sentence transformers model***
 
 5. If you would like to run bot without any voice annotation, type (`python -m chatbot`). To run bot with voice annotation, type (`python -m chatbot_tts`)
 
@@ -66,15 +66,39 @@ A small dataset referenced from Google Dialogflow(TM)'s smalltalk agent was crea
 
 ![Fig 1: datasets used for model training](https://github.com/beanlee999/mishabot/blob/cy/assets/datasets.png)
 
+# Working Principle
+## Document Similarity Method
+
+When a user enters an input, Misha needs to generate a response. This response is derived from either the FAQ datasets comprising of MOH, ICA and MOE FAQs datasets, or the smalltalk dataset (depending if user input is Covid related)
+
+We finetuned SentenceTransformers, and used it to embed the 'question' column of the `FAQ.csv` and `small_talk.csv`, as well as user's chat input. SentenceTransformers is a form of BERT sentence embedding, which has been used to compute sentence or text embeddings for more than 100 languages. We finetuned this model from the pre-trained model (*all-MiniLM-L6-v2*). This finetuning step was necessary as the pretrained model's training dataset does not include Covid related terms e.g. Covid-19, MOE, MOH, antigen rapid test etc). 
+
+The fine-tuned model was used to encode each question in the FAQ datasets and the user’s input. The resulting embedding is a sentence level/text level embedding. Cosine similarity was computed between each encoded question and the encoded user’s input to find the question with the highest cosine similarity score (Figure 19). A user check was performed to ensure that the closest question match was what he/she was looking for. If it is a match, Misha will return the corresponding answer to the matched question.
+
+![Fig 2: Sentence Transformers](https://github.com/beanlee999/mishabot/blob/cy/assets/sentencetransformers.png)
+
+## Question Classifier
+
+When a user inputs a text to Misha, he could pass a casual remark about Covid-19 which does not necessitate an answer from Misha. Therefore, a layer of checking is needed to identify the user’s intent (question or remark) in order for Misha to provide the right kind of response.
+
+We used a classifier model that is built on basis of BERT-base model and further fine-tuned. The tokeniser used is BERT tokeniser (bert-base-uncased). It is used to tokenise the user’s input to generate token_ids, segment embedding and positional embedding, which were both passed to the BERT model. The model architecture is the same as that used for BERT sentiment classifier (Figure 8). The predicted outcome with the highest probability is the selected result (1 being a question, 0 being non-question).
+
+Model weights are fine-tuned using the SQuAD train dataset and evaluated on 10% of dataset comprising SMS and FAQ dataset. The evaluation test set’s accuracy is 65% and the f1-score for question and non-question is at 0.60 and 0.68 respectively. A second fine tuning was done with a training dataset comprising SQuAD train, SMS and FAQ dataset. The evaluation test set is 10% of SQuAD validation dataset. The accuracy on the test set is 100% and f1-score for question and non-question are both 1.00. The saved model weights are loaded into Misha to classify user intent into question and non-question. A total of 5 epochs was used to finetune the model weights.
+
+![Fig 3: BERT model](https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png)
+
+![Fig 4: BERT classifier model](https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png)
+
+
 # Model Training
 
 These datasets are used to train 2 models:
 - BERT classification model to determine if user input is a question or not
-- Sentence BERT model to embed user input into a sentence embedding. Dataset used to trained this model is `data/SBERT_train.csv`, which contains a list of questions, question categories and the response to return. 
+- Sentence transformers model to embed user input into a sentence embedding. Dataset used to trained this model is `data/SBERT_train.csv`, which contains a list of questions, question categories and the response to return. 
 
-## Sentence BERT Model
+## Sentence Transformers Model
 
-To train Sentence BERT model, use the following command:
+To train Sentence transformers model, use the following command:
 ```
 python -m codes.faq_SBERT_train --epochs=10
 ```
@@ -88,3 +112,5 @@ This could take a few hours to train.
 
 
 
+
+# Credits
