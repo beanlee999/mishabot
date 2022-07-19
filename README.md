@@ -31,17 +31,17 @@ project_repo
     |                       (`classification.pt`)
     ├── codes/              <-  Folders containing codes for training 
     │   ├── classification.py
-    |   |                 ^- Codes to load `weights/classification.pt`, takes in embedded user
+    |   |                   ^- Codes to load `weights/classification.pt`, takes in embedded user
     |   |                   input and return results as a question or not
     |   ├── classification_train.py
-    |   |                 ^- Codes to train BERT classification model (question or not)
+    |   |                   ^- Codes to train BERT classification model (question or not)
     |   ├── faq_functions.py
-    |   |                 ^- Codes containing conversational, Q&A element of Misha
+    |   |                   ^- Codes containing conversational, Q&A element of Misha
     |   ├── faq_functions_tts.py
-    |   |                 ^- Codes containing conversational, Q&A element of Misha
+    |   |                   ^- Codes containing conversational, Q&A element of Misha
     |   |                 with text-to-speech element
     │   └── faq_SBERT_train.py
-    |                     ^- codes to train Sentence Transformers model and save trained results in 
+    |                       ^- codes to train Sentence Transformers model and save trained results in 
     |                       `SBERT/bot` folder
     ├── data/               <-  Folders containing text datasets for training sentence transformers and
     |                       BERT classification model
@@ -135,6 +135,8 @@ To run Misha with text-to-speech annotation:
 python -m chatbot_tts
 ```
 
+Click on the below video link for demo of Misha
+
 <a href="https://youtu.be/wFFYXVhNHCg" target="_blank">
  <img src="https://github.com/beanlee999/mishabot/blob/cy/assets/Misha.png" alt="Misha Demo" width="640" height="480" border="10" />
 </a>
@@ -146,4 +148,4 @@ Credits to the following teammates who worked as a team (collaborators) to compl
 - Yap Wan Yi
 - Foo Xiang Yu
 
-And to Ms Tan Ming Shan for giving Misha a name (My Information Service and Health Assistant)
+And to my girlfriend, Ms Tan Ming Shan for giving Misha a name (My Information Service and Health Assistant)
