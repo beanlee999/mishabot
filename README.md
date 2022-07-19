@@ -17,7 +17,7 @@ The flow of the Misha chatbot is as such:
 4.	If text contains keywords, Misha will check if the text is a question. If the text is not a question, Misha will ask if user would like to pose a question instead (Figure 28 in the appendix).
 5.	If text is a question, Misha will compute cosine similarity between encoded text and each of the FAQ question, find the closest question match and seek feedback from user if it is what he or she is looking for. If yes, Misha will return the corresponding answer, else, Misha will ask user to input question again.
 
-<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/design.png" alt="BERT classifier model" width="778" height="800"/>
+<img src="https://github.com/beanlee999/mishabot/blob/master/assets/design.png" alt="BERT classifier model" width="778" height="800"/>
 
 # Repository Structure
 
@@ -77,7 +77,7 @@ To train the classifer model to determine if a user input is a question, the SMS
 
 A small dataset referenced from Google Dialogflow(TM)'s smalltalk agent was created for the purpose of incorporating chat element into Misha to provide a sense of personal touch and engagement to users so that Misha feels more human-like.
 
-<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/datasets.png" alt="Sentence Transformers" width="756" height="400"/>
+<img src="https://github.com/beanlee999/mishabot/blob/master/assets/datasets.png" alt="Sentence Transformers" width="756" height="400"/>
 
 # Working Principle
 ## Document Similarity Method
@@ -88,7 +88,7 @@ We finetuned SentenceTransformers, and used it to embed the 'question' column of
 
 The fine-tuned model was used to encode each question in the FAQ datasets and the user’s input. The resulting embedding is a sentence level/text level embedding. Cosine similarity was computed between each encoded question and the encoded user’s input to find the question with the highest cosine similarity score (Figure 19). A user check was performed to ensure that the closest question match was what he/she was looking for. If it is a match, Misha will return the corresponding answer to the matched question.
 
-<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/sentencetransformers.png" alt="Sentence Transformers" width="505" height="518"/>
+<img src="https://github.com/beanlee999/mishabot/blob/master/assets/sentencetransformers.png" alt="Sentence Transformers" width="505" height="518"/>
 
 ## Question Classifier
 
@@ -96,11 +96,11 @@ When a user inputs a text to Misha, he could pass a casual remark about Covid-19
 
 We used a classifier model that is built on basis of BERT-base model and further fine-tuned. The tokeniser used is BERT tokeniser (bert-base-uncased). It is used to tokenise the user’s input to generate token_ids, segment embedding and positional embedding, which were both passed to the BERT model. The model architecture is the same as that used for BERT sentiment classifier (Figure 8). The predicted outcome with the highest probability is the selected result (1 being a question, 0 being non-question).
 
-<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png" alt="BERT model" width="336" height="500"/>
+<img src="https://github.com/beanlee999/mishabot/blob/master/assets/BERTmodel.png" alt="BERT model" width="336" height="500"/>
 
 Model weights are fine-tuned using the SQuAD train dataset and evaluated on 10% of dataset comprising SMS and FAQ dataset. The evaluation test set’s accuracy is 65% and the f1-score for question and non-question is at 0.60 and 0.68 respectively. A second fine tuning was done with a training dataset comprising SQuAD train, SMS and FAQ dataset. The evaluation test set is 10% of SQuAD validation dataset. The accuracy on the test set is 100% and f1-score for question and non-question are both 1.00. The saved model weights are loaded into Misha to classify user intent into question and non-question. A total of 5 epochs was used to finetune the model weights.
 
-<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png" alt="BERT classifier model" width="546" height="400"/>
+<img src="https://github.com/beanlee999/mishabot/blob/master/assets/classifier_results.png" alt="BERT classifier model" width="546" height="400"/>
 
 
 # Model Training
@@ -139,7 +139,7 @@ python -m chatbot_tts
 Click on the below video link for demo of Misha
 
 <a href="https://youtu.be/wFFYXVhNHCg" target="_blank">
- <img src="https://github.com/beanlee999/mishabot/blob/cy/assets/Misha.png" alt="Misha Demo" width="640" height="480" border="10" />
+ <img src="https://github.com/beanlee999/mishabot/blob/master/assets/Misha.png" alt="Misha Demo" width="640" height="480" border="10" />
 </a>
 
 
