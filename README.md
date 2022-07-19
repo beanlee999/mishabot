@@ -13,13 +13,16 @@ The flow of the Misha chatbot is as such:
 
 1.	User enters a text.
 2.	Misha will interpret if user’s intent is to end conversation. If yes, Misha will end conversation, else, it will move to next step.
-3.	Misha will identify if entered text contains keywords related to the FAQ datasets. If no, it will interpret text as a casual remark and will respond with small talk conversation (Figure 26 in the appendix) by computing cosine similarity score after encoding using SentenceTransformers.
+3.	Misha will identify if entered text contains keywords related to the FAQ datasets. If no, it will interpret text as a casual remark and will respond with small talk conversation by computing cosine similarity score after encoding using SentenceTransformers.
 4.	If text contains keywords, Misha will check if the text is a question. If the text is not a question, Misha will ask if user would like to pose a question instead (Figure 28 in the appendix).
-5.	If text is a question (Figure 27 in the appendix), Misha will compute cosine similarity between encoded text and each of the FAQ question, find the closest question match and seek feedback from user if it is what he or she is looking for. If yes, Misha will return the corresponding answer, else, Misha will ask user to input question again.
+5.	If text is a question, Misha will compute cosine similarity between encoded text and each of the FAQ question, find the closest question match and seek feedback from user if it is what he or she is looking for. If yes, Misha will return the corresponding answer, else, Misha will ask user to input question again.
 
 <img src="https://github.com/beanlee999/mishabot/blob/cy/assets/design.png" alt="BERT classifier model" width="778" height="800"/>
 
-# Folder Structure
+# Repository Structure
+
+The structure of the repository is as below:
+
 ```
 project_repo
     ├── assets/             <- Images used for README.md
@@ -60,10 +63,8 @@ To set up and run the chatbot:
 2. Change working directory to chatbot project folder directory ("cd <filepathtofolder>/chatbot_v4")
 3. Create a conda environment using `requirements.yml` [`conda env create -f requirements.yml`]. The name of the conda environment is `mishabot`
 4. Activate conda env (`conda activate mishabot`)
-
-***Download classification model weights/train Sentence transformers model***
-
-5. If you would like to run bot without any voice annotation, type (`python -m chatbot`). To run bot with voice annotation, type (`python -m chatbot_tts`)
+5. ***Download classification model weights/train Sentence transformers model***
+6. If you would like to run bot without any voice annotation, type (`python -m chatbot`). To run bot with voice annotation, type (`python -m chatbot_tts`)
 
 # Data Preparation
 
@@ -119,7 +120,34 @@ To train classifier model, use the following command:
 ```
 python -m codes.classification_train --epochs=10 --maxlen=35 --batch_size=128
 ```
-This could take a few hours to train.
+**Note**: This could take a few hours to train.
+
+# Demo
+A version of Misha without text-to-speech is available as chatbot.py and a version with text-to-speech is available as chatbot_tts.py. Instructions on how to set up and run the Misha can be found in the README markdown file in the chatbot_v4 submission folder. A virtual environment is required to be set up and the necessary dependencies installed.
+
+To run Misha without text-to-speech annotation:
+```
+python -m chatbot
+```
+
+To run Misha with text-to-speech annotation:
+```
+python -m chatbot_tts
+```
+
+<object width="545" height="450">
+  <param name="misha" value=https://youtu.be/wFFYXVhNHCg />
+  <param name="wmode" value="transparent" />
+  <embed src="https://youtu.be/wFFYXVhNHCg"
+         type="application/x-shockwave-flash"
+         wmode="transparent" width="545" height="450" />
+</object>
 
 
 # Credits
+Credits to the following teammates who worked as a team (collaborators) to complete this chatbot:
+- Lim Weijie
+- Yap Wan Yi
+- Foo Xiang Yu
+
+And to Ms Tan Ming Shan for giving Misha a name (My Information Service and Health Assistant)
