@@ -38,3 +38,5 @@ dependencies:
     - transformers==4.11.3
     - typing-extensions==3.10.0.2
     - urllib3==1.26.7
+    - google-cloud-storage
+    - gcloud
