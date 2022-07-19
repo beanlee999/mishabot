@@ -64,7 +64,7 @@ To train the classifer model to determine if a user input is a question, the SMS
 
 A small dataset referenced from Google Dialogflow(TM)'s smalltalk agent was created for the purpose of incorporating chat element into Misha to provide a sense of personal touch and engagement to users so that Misha feels more human-like.
 
-![Fig 1: datasets used for model training](https://github.com/beanlee999/mishabot/blob/cy/assets/datasets.png)
+![Fig 1: datasets used for model training](https://github.com/beanlee999/mishabot/blob/cy/assets/datasets.png =704x372)
 
 # Working Principle
 ## Document Similarity Method
@@ -75,7 +75,7 @@ We finetuned SentenceTransformers, and used it to embed the 'question' column of
 
 The fine-tuned model was used to encode each question in the FAQ datasets and the user’s input. The resulting embedding is a sentence level/text level embedding. Cosine similarity was computed between each encoded question and the encoded user’s input to find the question with the highest cosine similarity score (Figure 19). A user check was performed to ensure that the closest question match was what he/she was looking for. If it is a match, Misha will return the corresponding answer to the matched question.
 
-![Fig 2: Sentence Transformers](https://github.com/beanlee999/mishabot/blob/cy/assets/sentencetransformers.png)
+![Fig 2: Sentence Transformers](https://github.com/beanlee999/mishabot/blob/cy/assets/sentencetransformers.png =518x505)
 
 ## Question Classifier
 
@@ -85,9 +85,9 @@ We used a classifier model that is built on basis of BERT-base model and further
 
 Model weights are fine-tuned using the SQuAD train dataset and evaluated on 10% of dataset comprising SMS and FAQ dataset. The evaluation test set’s accuracy is 65% and the f1-score for question and non-question is at 0.60 and 0.68 respectively. A second fine tuning was done with a training dataset comprising SQuAD train, SMS and FAQ dataset. The evaluation test set is 10% of SQuAD validation dataset. The accuracy on the test set is 100% and f1-score for question and non-question are both 1.00. The saved model weights are loaded into Misha to classify user intent into question and non-question. A total of 5 epochs was used to finetune the model weights.
 
-![Fig 3: BERT model](https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png)
+![Fig 3: BERT model](https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png =419x624)
 
-![Fig 4: BERT classifier model](https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png)
+![Fig 4: BERT classifier model](https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png =598x438)
 
 
 # Model Training
