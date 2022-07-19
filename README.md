@@ -135,21 +135,10 @@ To run Misha with text-to-speech annotation:
 python -m chatbot_tts
 ```
 
-<iframe
-    width="640"
-    height="480"
-    src="https://youtu.be/wFFYXVhNHCg"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen
->
-</iframe>
-
 <a href="https://youtu.be/wFFYXVhNHCg" target="_blank">
- <img src="https://i9.ytimg.com/vi/wFFYXVhNHCg/mq1.jpg?sqp=CIze2ZYG&rs=AOn4CLBQpoYTKYRANJiNEkfD4bt1kGdEOQ" alt="Misha Demo" width="640" height="480" border="10" />
+ <img src="https://github.com/beanlee999/mishabot/blob/cy/assets/Misha.png" alt="Misha Demo" width="640" height="480" border="10" />
 </a>
 
-[![Misha](https://i9.ytimg.com/vi/wFFYXVhNHCg/mq1.jpg?sqp=CIze2ZYG&rs=AOn4CLBQpoYTKYRANJiNEkfD4bt1kGdEOQ)](https://youtu.be/wFFYXVhNHCg "Misha")
 
 # Credits
 Credits to the following teammates who worked as a team (collaborators) to complete this chatbot:
