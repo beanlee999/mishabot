@@ -8,6 +8,17 @@ The objectives of Misha are as follows:
 
 Misha is currently available for deployment on local devices (laptops and computers). She is trained mainly from FAQ datasets extracted from Ministry of Health, Ministry of Education and Immigration and Customs Authority websites. While the main purpose of Misha is to provide answers to user queries, she can respond briefly to users’ small chat as well. 
 
+# Design
+The flow of the Misha chatbot is as such:
+
+1.	User enters a text.
+2.	Misha will interpret if user’s intent is to end conversation. If yes, Misha will end conversation, else, it will move to next step.
+3.	Misha will identify if entered text contains keywords related to the FAQ datasets. If no, it will interpret text as a casual remark and will respond with small talk conversation (Figure 26 in the appendix) by computing cosine similarity score after encoding using SentenceTransformers.
+4.	If text contains keywords, Misha will check if the text is a question. If the text is not a question, Misha will ask if user would like to pose a question instead (Figure 28 in the appendix).
+5.	If text is a question (Figure 27 in the appendix), Misha will compute cosine similarity between encoded text and each of the FAQ question, find the closest question match and seek feedback from user if it is what he or she is looking for. If yes, Misha will return the corresponding answer, else, Misha will ask user to input question again.
+
+<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/design.png" alt="BERT classifier model" width="778" height="800"/>
+
 # Folder Structure
 ```
 project_repo
@@ -83,9 +94,9 @@ When a user inputs a text to Misha, he could pass a casual remark about Covid-19
 
 We used a classifier model that is built on basis of BERT-base model and further fine-tuned. The tokeniser used is BERT tokeniser (bert-base-uncased). It is used to tokenise the user’s input to generate token_ids, segment embedding and positional embedding, which were both passed to the BERT model. The model architecture is the same as that used for BERT sentiment classifier (Figure 8). The predicted outcome with the highest probability is the selected result (1 being a question, 0 being non-question).
 
-Model weights are fine-tuned using the SQuAD train dataset and evaluated on 10% of dataset comprising SMS and FAQ dataset. The evaluation test set’s accuracy is 65% and the f1-score for question and non-question is at 0.60 and 0.68 respectively. A second fine tuning was done with a training dataset comprising SQuAD train, SMS and FAQ dataset. The evaluation test set is 10% of SQuAD validation dataset. The accuracy on the test set is 100% and f1-score for question and non-question are both 1.00. The saved model weights are loaded into Misha to classify user intent into question and non-question. A total of 5 epochs was used to finetune the model weights.
-
 <img src="https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png" alt="BERT model" width="336" height="500"/>
+
+Model weights are fine-tuned using the SQuAD train dataset and evaluated on 10% of dataset comprising SMS and FAQ dataset. The evaluation test set’s accuracy is 65% and the f1-score for question and non-question is at 0.60 and 0.68 respectively. A second fine tuning was done with a training dataset comprising SQuAD train, SMS and FAQ dataset. The evaluation test set is 10% of SQuAD validation dataset. The accuracy on the test set is 100% and f1-score for question and non-question are both 1.00. The saved model weights are loaded into Misha to classify user intent into question and non-question. A total of 5 epochs was used to finetune the model weights.
 
 <img src="https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png" alt="BERT classifier model" width="546" height="400"/>
 
@@ -109,8 +120,6 @@ To train classifier model, use the following command:
 python -m codes.classification_train --epochs=10 --maxlen=35 --batch_size=128
 ```
 This could take a few hours to train.
-
-
 
 
 # Credits
