@@ -64,7 +64,7 @@ To train the classifer model to determine if a user input is a question, the SMS
 
 A small dataset referenced from Google Dialogflow(TM)'s smalltalk agent was created for the purpose of incorporating chat element into Misha to provide a sense of personal touch and engagement to users so that Misha feels more human-like.
 
-![Fig 1: datasets used for model training](https://github.com/beanlee999/mishabot/blob/cy/assets/datasets.png =704x372)
+<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/datasets.png" alt="Sentence Transformers" width="756" height="400"/>
 
 # Working Principle
 ## Document Similarity Method
@@ -85,9 +85,9 @@ We used a classifier model that is built on basis of BERT-base model and further
 
 Model weights are fine-tuned using the SQuAD train dataset and evaluated on 10% of dataset comprising SMS and FAQ dataset. The evaluation test set’s accuracy is 65% and the f1-score for question and non-question is at 0.60 and 0.68 respectively. A second fine tuning was done with a training dataset comprising SQuAD train, SMS and FAQ dataset. The evaluation test set is 10% of SQuAD validation dataset. The accuracy on the test set is 100% and f1-score for question and non-question are both 1.00. The saved model weights are loaded into Misha to classify user intent into question and non-question. A total of 5 epochs was used to finetune the model weights.
 
-<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png" alt="BERT model" width="500" height="300"/>
+<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png" alt="BERT model" width="500" height="336"/>
 
-<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png" alt="BERT classifier model" width="300" height="500"/>
+<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png" alt="BERT classifier model" width="546" height="400"/>
 
 
 # Model Training
