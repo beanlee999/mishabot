@@ -75,6 +75,8 @@ We finetuned SentenceTransformers, and used it to embed the 'question' column of
 
 The fine-tuned model was used to encode each question in the FAQ datasets and the user’s input. The resulting embedding is a sentence level/text level embedding. Cosine similarity was computed between each encoded question and the encoded user’s input to find the question with the highest cosine similarity score (Figure 19). A user check was performed to ensure that the closest question match was what he/she was looking for. If it is a match, Misha will return the corresponding answer to the matched question.
 
+<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/sentencetransformers.png" alt="Sentence Transformers" width="505" height="518"/>
+
 ![Fig 2: Sentence Transformers](https://github.com/beanlee999/mishabot/blob/cy/assets/sentencetransformers.png =518x505)
 
 ## Question Classifier
