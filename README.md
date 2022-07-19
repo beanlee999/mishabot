@@ -85,7 +85,7 @@ We used a classifier model that is built on basis of BERT-base model and further
 
 Model weights are fine-tuned using the SQuAD train dataset and evaluated on 10% of dataset comprising SMS and FAQ dataset. The evaluation test set’s accuracy is 65% and the f1-score for question and non-question is at 0.60 and 0.68 respectively. A second fine tuning was done with a training dataset comprising SQuAD train, SMS and FAQ dataset. The evaluation test set is 10% of SQuAD validation dataset. The accuracy on the test set is 100% and f1-score for question and non-question are both 1.00. The saved model weights are loaded into Misha to classify user intent into question and non-question. A total of 5 epochs was used to finetune the model weights.
 
-<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png" alt="BERT model" width="500" height="336"/>
+<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png" alt="BERT model" width="336" height="500"/>
 
 <img src="https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png" alt="BERT classifier model" width="546" height="400"/>
 
