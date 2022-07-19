@@ -77,8 +77,6 @@ The fine-tuned model was used to encode each question in the FAQ datasets and th
 
 <img src="https://github.com/beanlee999/mishabot/blob/cy/assets/sentencetransformers.png" alt="Sentence Transformers" width="505" height="518"/>
 
-![Fig 2: Sentence Transformers](https://github.com/beanlee999/mishabot/blob/cy/assets/sentencetransformers.png =518x505)
-
 ## Question Classifier
 
 When a user inputs a text to Misha, he could pass a casual remark about Covid-19 which does not necessitate an answer from Misha. Therefore, a layer of checking is needed to identify the user’s intent (question or remark) in order for Misha to provide the right kind of response.
@@ -87,9 +85,9 @@ We used a classifier model that is built on basis of BERT-base model and further
 
 Model weights are fine-tuned using the SQuAD train dataset and evaluated on 10% of dataset comprising SMS and FAQ dataset. The evaluation test set’s accuracy is 65% and the f1-score for question and non-question is at 0.60 and 0.68 respectively. A second fine tuning was done with a training dataset comprising SQuAD train, SMS and FAQ dataset. The evaluation test set is 10% of SQuAD validation dataset. The accuracy on the test set is 100% and f1-score for question and non-question are both 1.00. The saved model weights are loaded into Misha to classify user intent into question and non-question. A total of 5 epochs was used to finetune the model weights.
 
-![Fig 3: BERT model](https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png =419x624)
+<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/BERTmodel.png" alt="BERT model" width="500" height="300"/>
 
-![Fig 4: BERT classifier model](https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png =598x438)
+<img src="https://github.com/beanlee999/mishabot/blob/cy/assets/classifier_results.png" alt="BERT classifier model" width="300" height="500"/>
 
 
 # Model Training
