@@ -145,7 +145,7 @@ python -m chatbot_tts
 >
 </iframe>
 
-[![Misha](https://i9.ytimg.com/vi/wFFYXVhNHCg/mq1.jpg?sqp=CIze2ZYG&rs=AOn4CLBQpoYTKYRANJiNEkfD4bt1kGdEOQ))](https://youtu.be/wFFYXVhNHCg "Misha")
+[![Misha](https://i9.ytimg.com/vi/wFFYXVhNHCg/mq1.jpg?sqp=CIze2ZYG&rs=AOn4CLBQpoYTKYRANJiNEkfD4bt1kGdEOQ)](https://youtu.be/wFFYXVhNHCg "Misha")
 
 # Credits
 Credits to the following teammates who worked as a team (collaborators) to complete this chatbot:
