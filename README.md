@@ -1,9 +1,9 @@
-**Introduction**
+# Introduction
 
 This is a demo chatbot built in 2021, to demonstrate the ability for an AI model to 
 
 
-**Folder Structure**
+# Folder Structure
 ```
 project_repo
     ├── assets              <- Images used for README.md
@@ -11,20 +11,30 @@ project_repo
     │                       and how to set it up
     ├── requirements.yml    <-  YAML file containing dependency list for setting up
     │                       conda environment
-    ├── .dockerignore       <-  File for specifying files or directories
-    │                       to be ignored by Docker contexts.
-    ├── .pylintrc           <-  Configurations for `pylint`.
+    ├── chatbot.py          <-  Python scripts to set up Misha Chatbot
+    ├── chatbot_tts.py      <-  Python scripts to run Misha Chatbot with voice annotation
+    ├── SBERT               <-  Folder containing codes for sentence transformers
+    ├── weights             <-  Folder containing weights for classification model
+    |                       (`classification.pt`)
+    ├── codes               <-  Folders containing codes for training 
+    │   ├── classification.py
+    |   |                 ^- Codes to load `weights/classification.pt`, takes in embedded user
+    |   |                   input and return results as a question or not
+    |   ├── classification_train.py
+    |   |                 ^- Codes to train BERT classification model (question or not)
+    |   ├── faq_functions.py
+    |   |                 ^- Codes containing conversational, Q&A element of Misha
+    |   ├── faq_functions_tts.py
+    |   |                 ^- Codes containing conversational, Q&A element of Misha
+    |   |                 with text-to-speech element
+    │   └── faq_SBERT_train.py
+    |                     ^- codes to train SBERT model and save trained results in 
+    |                       `SBERT/bot` folder
     ├── .gitignore          <-  File for specifying files or directories
     │                       to be ignored by Git.
-    ├── data                <-  Folders containing images files for model training
-    │   ├── cleaned         <-  Directory containing raw zipped folders for 
-    |   |                   training image
-    │   ├── extracted       <-  Directory containing extracted unzipped folders for 
-    |                       training images, and image metadata stored in .pkl file
-
 ```
 
-**Steps to set up**
+# Steps to set up
 To set up and run the chatbot:
 
 1. In windows, open anaconda prompt. In Mac, open terminal. 
@@ -35,7 +45,18 @@ To set up and run the chatbot:
 
 4. Activate conda env (`conda activate mishabot`)
 
-5. If you would like to run bot without any voice annotation, type (`python chatbot.py`). To run bot with voice annotation, type (`python chatbot_tts.py`)
+5. If you would like to run bot without any voice annotation, type (`python -m chatbot`). To run bot with voice annotation, type (`python -m chatbot_tts`)
+
+# Data Preparation
+
+<assets/datasets.png>
+
+# Model Training
+## Classification Model
+
+## SBERT Model
+
+
 
 
 
