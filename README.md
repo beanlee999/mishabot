@@ -49,7 +49,7 @@ To set up and run the chatbot:
 
 # Data Preparation
 
-<assets/datasets.png>
+![datasets used for model training](https://github.com/beanlee999/mishabot/blob/cy/assets/datasets.png)
 
 # Model Training
 ## Classification Model
