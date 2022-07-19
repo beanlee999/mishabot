@@ -59,9 +59,10 @@ project_repo
 # Steps to set up
 To set up and run the chatbot:
 
-1. In windows, open anaconda prompt. In Mac, open terminal. 
+1. Download project repo by git clone or zip folder.
+2. In windows, open anaconda prompt. In Mac, open terminal. 
 2. Change working directory to chatbot project folder directory ("cd <filepathtofolder>/chatbot_v4")
-3. Create a conda environment using `requirements.yml` [`conda env create -f requirements.yml`]. The name of the conda environment is `mishabot`
+3. Create a conda environment using the following command: `conda env create -f requirements.yml`]. The name of the conda environment is `mishabot`. Enter `y` when prompted to.
 4. Activate conda env (`conda activate mishabot`)
 5. Download model weights from Google Cloud Storage by running the following command `python -m download_files`
 6. If you would like to run bot without any voice annotation, type (`python -m chatbot`). To run bot with voice annotation, type (`python -m chatbot_tts`)
