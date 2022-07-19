@@ -149,4 +149,4 @@ Credits to the following teammates who worked as a team (collaborators) to compl
 - Yap Wan Yi
 - Foo Xiang Yu
 
-And to my girlfriend, Ms Tan Ming Shan for giving Misha a name (My Information Service and Health Assistant)
+And to my girlfriend, Ming Shan for giving Misha a name (My Information Service and Health Assistant)
