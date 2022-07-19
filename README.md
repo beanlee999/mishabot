@@ -50,7 +50,8 @@ To set up and run the chatbot:
 3. Create a conda environment using `requirements.yml` [`conda env create -f requirements.yml`]. The name of the conda environment is `mishabot`
 4. Activate conda env (`conda activate mishabot`)
 
-** Download classification model weights/train Sentence BERT model**
+***Download classification model weights/train Sentence BERT model***
+
 5. If you would like to run bot without any voice annotation, type (`python -m chatbot`). To run bot with voice annotation, type (`python -m chatbot_tts`)
 
 # Data Preparation
@@ -71,11 +72,19 @@ These datasets are used to train 2 models:
 - BERT classification model to determine if user input is a question or not
 - Sentence BERT model to embed user input into a sentence embedding. Dataset used to trained this model is `data/SBERT_train.csv`, which contains a list of questions, question categories and the response to return. 
 
-## Classification Model
+## Sentence BERT Model
 
-## SBERT Model
+To train Sentence BERT model, use the following command:
+```
+python -m codes.faq_SBERT_train --epochs=10
+```
 
-
+## Classification Model 
+To train classifier model, use the following command:
+```
+python -m codes.classification_train --epochs=10 --maxlen=35 --batch_size=128
+```
+This could take a few hours to train.
 
 
 
