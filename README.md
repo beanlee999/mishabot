@@ -135,15 +135,17 @@ To run Misha with text-to-speech annotation:
 python -m chatbot_tts
 ```
 
-<object width="545" height="450">
-  <param name="misha" value=https://youtu.be/wFFYXVhNHCg />
-  <param name="wmode" value="transparent" />
-  <embed src="https://youtu.be/wFFYXVhNHCg"
-         type="application/x-shockwave-flash"
-         wmode="transparent" width="545" height="450" />
-</object>
+<iframe
+    width="640"
+    height="480"
+    src="https://youtu.be/wFFYXVhNHCg"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+>
+</iframe>
 
-[![Misha]())](ttps://youtu.be/wFFYXVhNHCg "Misha")
+[![Misha]())](https://youtu.be/wFFYXVhNHCg "Misha")
 
 # Credits
 Credits to the following teammates who worked as a team (collaborators) to complete this chatbot:
